@@ -1,7 +1,9 @@
 <h2> 児童　新規登録</h2>
 
 <div class="c_signup">
-  <%= form_with model: @child do |f| %>
+  <%= form_with(model: @child, local: true) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+  
     <%= f.label :"名前" %>
     <%= f.text_field :name %>
     

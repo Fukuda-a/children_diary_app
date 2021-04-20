@@ -1,0 +1,17 @@
+<h1>児童一覧</h1>
+
+
+  <% @children.each do |child| %>
+    <li>
+      <%= child.name %>
+      
+      <%= child.birthday %>
+      
+      <%= child.child_centers_name %>
+      
+      <%= child.child_number %>
+    </li>
+  
+  <% end %>
+
+

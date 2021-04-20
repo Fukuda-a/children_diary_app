@@ -10,15 +10,24 @@
   </head>
 
   <body>
+    <% flash.each do |message_type, message| %>
+      <%= message %>
+    <% end %>
     <header>
       <nav>
           <% if user_signed_in? %>
             <strong><%= link_to current_user.username, pages_show_path %></strong>
             <%= link_to 'プロフィール変更', edit_user_registration_path %>
             <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+            <%= link_to '児童一覧', children_path %>
+              <% if current_user.admin? %>
+                <%= link_to '児童登録', new_child_path %>
+              <% end %>
           <% else %>
             <%= link_to 'サインアップ', new_user_registration_path %>
             <%= link_to 'ログイン', new_user_session_path %>
+            
+            
           <% end %>
       </nav>
     </header>

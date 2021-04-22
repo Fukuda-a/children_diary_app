@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  living: MyText
+  health: MyText
+  visit: MyText
+  information: MyText
+  children: one
+  group: one
+  user: one
+
+two:
+  living: MyText
+  health: MyText
+  visit: MyText
+  information: MyText
+  children: two
+  group: two
+  user: two

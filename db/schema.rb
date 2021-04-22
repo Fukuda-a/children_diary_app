@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_20_062010) do
+ActiveRecord::Schema.define(version: 2021_04_21_073654) do
 
   create_table "children", force: :cascade do |t|
     t.string "name"
@@ -19,6 +19,21 @@ ActiveRecord::Schema.define(version: 2021_04_20_062010) do
     t.integer "child_number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "children_diaries", force: :cascade do |t|
+    t.text "living"
+    t.text "health"
+    t.text "visit"
+    t.text "information"
+    t.integer "children_id", null: false
+    t.integer "group_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["children_id"], name: "index_children_diaries_on_children_id"
+    t.index ["group_id"], name: "index_children_diaries_on_group_id"
+    t.index ["user_id"], name: "index_children_diaries_on_user_id"
   end
 
   create_table "groups", force: :cascade do |t|
@@ -60,4 +75,7 @@ ActiveRecord::Schema.define(version: 2021_04_20_062010) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "children_diaries", "children", column: "children_id"
+  add_foreign_key "children_diaries", "groups"
+  add_foreign_key "children_diaries", "users"
 end

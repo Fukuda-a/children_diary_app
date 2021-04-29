@@ -1,17 +1,31 @@
-<h1>児童一覧</h1>
-
-
-  <% @children.each do |child| %>
-    <li>
-      <%= child.name %>
-      
-      <%= child.birthday %>
-      
-      <%= child.child_centers_name %>
-      
-      <%= child.child_number %>
-    </li>
+<!DOCTYPE html>
+<html>
+<head>
+<title>児童一覧</title>
+</head>
+<body>
+ <table border="1" width="600">
+    <tr>
+      <th>名前</th>
+      <th>誕生日</th>
+      <th>児童相談所名</th>
+      <th>児童番号</th>
+    </tr>
+      <% @children.each do |child| %>
+    <tr>
+      <td><%=child.name%></td>
   
-  <% end %>
-
-
+      <td><%=child.birthday%></td>
+  
+      <td><%=child.child_centers_name%></td>
+   
+      <td><%=child.child_number%></td>
+        <% if current_user.admin? %>
+          <td><%= link_to "削除", child, method: :delete,data: { confirm: "本当に削除しますか?" } %></td>
+        <% end %>
+    </tr>
+      <% end %>
+    </tr>
+  </table>
+</body>
+</html>

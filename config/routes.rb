@@ -3,7 +3,15 @@ Rails.application.routes.draw do
   
   root 'pages#index'
   get 'pages/show'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  #diary
+  get '/living', to: 'children_diaries#living'
+  get '/health', to: 'children_diaries#health'
+  get '/visit', to: 'children_diaries#visit'
+  get '/information', to: 'children_diaries#information'
+  
   
   resources :children
+  resources :children_diaries
+  
 end

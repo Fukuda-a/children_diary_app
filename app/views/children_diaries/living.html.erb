@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>生活状況</title>
+</head>
+<body>
+ <table border="1" width="400">
+    <tr>
+      <th　width="30%">名前</th>
+      <th　width="70%">生活状況</th>
+    </tr>
+    <tr>
+      <td>
+        <%= form_with model: @children_diary do |f| %>
+        <%= f.hidden_field :child, :value => @child_id %>
+        <%= f.hidden_field :group, :value => @group_id %>
+        <%= f.hidden_field :user, :value => @user_id %>
+        <div class="field">
+          <%= f.collection_select(:name, @children, :name, :name)%>
+          
+            
+          <%= f.text_area :living %>
+        </div>
+        <%= f.submit "保存" %>
+        <% end %>
+      </td>
+    </tr>
+     
+     
+  </table>
+</body>
+</html>

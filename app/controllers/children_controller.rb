@@ -1,7 +1,7 @@
 class ChildrenController < ApplicationController
   
   def index
-    @children = Child.all
+    @children = Child.all 
   end
   
   def show
@@ -16,7 +16,7 @@ class ChildrenController < ApplicationController
     @child = Child.new(child_params)
       if @child.save
         flash[:success] = "#{@child.name} が登録されました"
-        redirect_to 'children/index'
+        redirect_to @child
       else
         render 'children/new'
       end

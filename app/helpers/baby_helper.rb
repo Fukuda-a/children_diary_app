@@ -1,0 +1,2 @@
+module BabyHelper
+end

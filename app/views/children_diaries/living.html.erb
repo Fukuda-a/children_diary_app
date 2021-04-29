@@ -11,17 +11,13 @@
     </tr>
     <tr>
       <td>
-        <%= form_with model: @children_diary do |f| %>
-        <%= f.hidden_field :child, :value => @child_id %>
-        <%= f.hidden_field :group, :value => @group_id %>
-        <%= f.hidden_field :user, :value => @user_id %>
-        <div class="field">
-          <%= f.collection_select(:name, @children, :name, :name)%>
-          
-            
-          <%= f.text_area :living %>
-        </div>
-        <%= f.submit "保存" %>
+        <%= form_with model: @children_diary, :local => true do |f| %>
+          <%= f.hidden_field :group_id, :value => 1 %>
+          <div class="field">
+            <%= f.collection_select(:children_id, @children, :id, :name)%>
+            <%= f.text_area :living %>
+          </div>
+          <%= f.submit "保存" %>
         <% end %>
       </td>
     </tr>

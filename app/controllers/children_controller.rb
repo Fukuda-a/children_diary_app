@@ -15,6 +15,7 @@ class ChildrenController < ApplicationController
   
   def create
     @child = Child.new(child_params)
+    @child.group_id = @child.group_number
       if @child.save
         flash[:success] = "#{@child.name} が登録されました"
         render 'children/show'
@@ -33,7 +34,7 @@ class ChildrenController < ApplicationController
   private
   
    def child_params
-     params.require(:child).permit(:name,:birthday,:child_centers_name,:child_number)
+     params.require(:child).permit(:name,:birthday,:child_centers_name,:child_number,:group_number,:group_id)
    end
   
 end

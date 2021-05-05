@@ -1,5 +1,5 @@
 class Child < ApplicationRecord
-  # has_many :children_diaries
+  has_many :children_diaries,foreign_key: :children_id,dependent: :destroy
   
   validates :name, presence: true, length: { maximum: 50 }
   validates :birthday, presence: true

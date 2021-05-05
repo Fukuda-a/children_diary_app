@@ -1,6 +1,17 @@
-<h2> 児童　新規登録</h2>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <title>児童新規登録</title>
+  </head>
+  <body>
+    
+  <%= link_to :back do %>
+  <button>戻る</button>
+  <%end%>
+  
+  <h1> 児童　新規登録</h1>
 
-<div class="c_signup">
+  <div class="c_signup">
   <%= form_with(model: @child, local: true) do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
   
@@ -8,7 +19,7 @@
     <%= f.text_field :name %>
     
     <%= f.label :"生年月日" %>
-    <%= f.text_field :birthday %>
+    <%= f.date_select :birthday, use_month_numbers: true,start_year: (Time.now.year - 20),end_year: Time.now.year, default: Date.new(2000, 1, 1) %>
     
     <%= f.label :"児童相談所名" %>
     <%= f.text_field :child_centers_name %>
@@ -16,6 +27,12 @@
     <%= f.label :"児童番号" %>
     <%= f.text_field :child_number %>
     
+    <%= f.label :"所属グループ" %>
+    <%= f.select :group_number,[['女子',1],['男子',2],['幼児',3]] %>
+    
     <%= f.submit "新規登録" %>
   <% end %>
 </div> 
+  </body>
+</html>
+

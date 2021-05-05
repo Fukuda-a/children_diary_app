@@ -1,28 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
+  
 <head>
 <title>生活状況</title>
 </head>
 <body>
- <table border="1" width="400">
+  <%= link_to :back do %>
+  <button>戻る</button>
+  <% end %>
     <tr>
-      <th　width="30%">名前</th>
-      <th　width="70%">生活状況</th>
+      <h1>生活状況</h1>
     </tr>
     <tr>
       <td>
         <%= form_with model: @children_diary, :local => true do |f| %>
-          <%= f.hidden_field :group_id, :value => 1 %>
           <div class="field">
             <%= f.collection_select(:children_id, @children, :id, :name)%>
+            <%= f.date_field :date %>
             <%= f.text_area :living %>
           </div>
           <%= f.submit "保存" %>
         <% end %>
       </td>
     </tr>
-     
-     
   </table>
 </body>
 </html>

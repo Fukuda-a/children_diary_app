@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_24_042817) do
+ActiveRecord::Schema.define(version: 2021_04_30_094801) do
 
   create_table "children", force: :cascade do |t|
     t.string "name"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2021_04_24_042817) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "group_number"
+    t.date "date"
     t.index ["children_id"], name: "index_children_diaries_on_children_id"
     t.index ["group_id"], name: "index_children_diaries_on_group_id"
     t.index ["user_id"], name: "index_children_diaries_on_user_id"
@@ -56,9 +57,7 @@ ActiveRecord::Schema.define(version: 2021_04_24_042817) do
   end
 
   create_table "groups", force: :cascade do |t|
-    t.string "girl"
-    t.string "boy"
-    t.string "baby"
+    t.string "group_name"
     t.integer "group_number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

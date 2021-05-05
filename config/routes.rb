@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'pages/show'
 
   #diary
+  get '/home', to: 'children_diaries#home'
   get '/living', to: 'children_diaries#living'
   get '/health', to: 'children_diaries#health'
   get '/visit', to: 'children_diaries#visit'

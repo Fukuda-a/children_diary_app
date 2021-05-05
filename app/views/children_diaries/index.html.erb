@@ -1,13 +1,30 @@
-<h1>〇〇施設　養護日誌</h1>
-
-
- 
-    <li>
-      <%= link_to '生活状況', "/living" %>
-      <%= link_to '健康状況', "/health" %>
-      <%= link_to '面会状況', "/visit" %>
-      <%= link_to '共有事項', "/information" %>
-      
-      
-      
-    </li>
+<!DOCTYPE html>
+<html lang="ja">
+  
+<head>
+<title>児童状況一覧</title>
+</head>
+<body>
+  <h1>児童状況一覧</h1>
+  <table border="1" width="600">
+    <tr>
+      <th>名前</th>
+      <th>生活状況</th>
+      <th>健康状況</th>
+      <th>面会状況</th>
+      <th>共有事項</th>
+    </tr>
+     <% @children.each do |child| %>
+      <% children_diary = ChildrenDiary.find_by(children_id: child.id) %>
+      <tr>
+          <td><%=child.name %></td>
+          <td><% if children_diary.present? %><%= children_diary.living %><% end %></td>
+          <td><% if children_diary.present? %><%= children_diary.health %><% end %></td>
+          <td><% if children_diary.present? %><%= children_diary.visit %><% end %></td>
+          <td><% if children_diary.present? %><%= children_diary.information %><% end %></td>
+          <td><% if children_diary.present? %><%= link_to "削除", children_diary, method: :delete,data: { confirm: "本当に削除しますか?" } %><% end %></td>
+      </tr>
+      <% end %>
+  </table>
+</body>
+</html>

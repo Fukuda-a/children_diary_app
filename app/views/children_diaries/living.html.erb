@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html lang="ja">
-  
-<head>
-<title>生活状況</title>
-</head>
-<body>
-  <%= link_to :back do %>
-  <button>戻る</button>
-  <% end %>
-    <tr>
-      <h1>生活状況</h1>
-    </tr>
+<h1>生活状況</h1>
     <tr>
       <td>
         <%= form_with model: @children_diary, :local => true do |f| %>
@@ -23,6 +11,3 @@
         <% end %>
       </td>
     </tr>
-  </table>
-</body>
-</html>

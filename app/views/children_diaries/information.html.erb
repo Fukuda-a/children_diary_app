@@ -1,29 +1,12 @@
-<!DOCTYPE html>
-<html lang="ja">
-  
-<head>
-<title>共有事項</title>
-</head>
-<body>
-  <%= link_to :back do %>
-    <button>戻る</button>
-  <% end %>
-    <tr>
-      <h1>共有事項</h1>
-    </tr>
-    <tr>
-      <td>
-        <%= form_with model: @children_diary, :local => true do |f| %>
-          <div class="field">
-            <%= f.date_field :date %>
-            <%= f.text_area :information %>
-          </div>
-          <%= f.submit "保存" %>
-        <% end %>
-      </td>
-    </tr>
-     
-     
-  </table>
-</body>
-</html>
+    <h1>共有事項</h1>
+  <tr>
+    <td>
+      <%= form_with model: @children_diary, :local => true do |f| %>
+        <div class="field">
+          <%= f.date_field :date %>
+          <%= f.text_area :information %>
+        </div>
+        <%= f.submit "保存" %>
+      <% end %>
+    </td>
+  </tr>

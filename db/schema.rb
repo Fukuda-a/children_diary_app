@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2021_04_30_094801) do
     t.text "health"
     t.text "visit"
     t.text "information"
+    t.date "date"
     t.integer "children_id", null: false
     t.integer "group_id", null: false
     t.integer "user_id", null: false

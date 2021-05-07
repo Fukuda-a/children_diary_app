@@ -5,6 +5,7 @@ class CreateChildrenDiaryLogs < ActiveRecord::Migration[6.0]
       t.text :health
       t.text :visit
       t.text :information
+      t.date :date
       t.references :children, null: false, foreign_key: true
       t.references :group, null: false, foreign_key: true
       t.references :user, null: false, foreign_key: true

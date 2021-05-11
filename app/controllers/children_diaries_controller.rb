@@ -17,21 +17,25 @@ class ChildrenDiariesController < ApplicationController
   def living
     @children = Child.all
     @children_diary = ChildrenDiary.new
+    #@children_diaries = ChildrenDiary.where('living LIKE ?', "%#{params[:living]}%")
   end
   
   def health
     @children = Child.all
     @children_diary = ChildrenDiary.new
+    #@children_diaries = ChildrenDiary.where('health LIKE ?', "%#{params[:health]}%")
   end
   
   def visit
     @children = Child.all
     @children_diary = ChildrenDiary.new
+    #@children_diaries = ChildrenDiary.where('visit LIKE ?', "%#{params[:visit]}%")
   end
   
   def information
     @children = Child.all
     @children_diary = ChildrenDiary.new
+    #@children_diaries = ChildrenDiary.where('information LIKE ?', "%#{params[:information]}%")
   end
   
   def new
@@ -57,8 +61,13 @@ class ChildrenDiariesController < ApplicationController
       end 
   end
   
-
+  def show
+    @children_diary = ChildrenDiary.find(params[:id])
+  end
   
+  def search
+    @children_diaries = ChildrenDiary.search(params[:diary])
+  end
   
   private
   

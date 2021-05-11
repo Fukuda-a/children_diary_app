@@ -1,0 +1,39 @@
+<div class="search">
+ <%= form_with url: search_path, method: :get, local: true do |f| %>
+  <%= f.text_field :diary %>
+  <%= f.submit "検索" %>
+ <% end %>
+</div>
+
+
+<table border="1" width="1000">
+  <% if @children_diaries == [] %>
+    <h2 class = "seach-result">検索結果はありません</h2>
+  <% else %>
+  <thead>
+    <tr>
+      <th>児童名</th>
+      <th>生活状況</th>
+      <th>健康状況</th>
+      <th>面会状況</th>
+      <th>共有事項</th>
+      <th>年月日</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @children_diaries.each do |children_diary| %>
+      <% child = Child.find_by(id: children_diary.children_id) %>
+      <tr>
+        <td><%= child.name %></td>
+        <td><%= children_diary.living %></td>
+        <td><%= children_diary.health %></td>
+        <td><%= children_diary.visit %></td>
+        <td><%= children_diary.information %></td>
+        <td><%= children_diary.date %></td>
+        <td><%= link_to "詳細を見る",children_diary,method: :get %></td>
+        <td><%= link_to "削除",children_diary, method: :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+  <% end %>
+</table>

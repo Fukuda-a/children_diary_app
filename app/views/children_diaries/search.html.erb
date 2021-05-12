@@ -7,7 +7,7 @@
 
 
 <table border="1" width="1000">
-  <% if @children_diaries == [] %>
+  <% unless @children_diaries.present? %>
     <h2 class = "seach-result">検索結果はありません</h2>
   <% else %>
   <thead>

@@ -1,5 +1,5 @@
 <h1>児童状況一覧</h1>
-  <table border="1" width="600">
+  <table border="1" width="1000">
     <tr>
       <th>名前</th>
       <th>生活状況</th>
@@ -7,13 +7,13 @@
       <th>面会状況</th>
       <th>共有事項</th>
     </tr>
-     <% @children.each do |child| %>
-      <% children_diary = ChildrenDiary.find_by(children_id: child.id) %>
+     <% @children_diaries.each do |children_diary| %>
+      <% child = Child.find_by(id: children_diary.children_id) %>
       <tr>
-          <td><%=child.name %></td>
+          <td><% if children_diary.present? %><%=child.name %><% end %></td>  
           <td><% if children_diary.present? %><%= children_diary.living %><% end %></td>
-          <td><% if children_diary.present? %><%= children_diary.health %><% end %></td>
-          <td><% if children_diary.present? %><%= children_diary.visit %><% end %></td>
+          <td><% if children_diary.present? %><%= children_diary.health%><% end %></td>
+          <td><% if children_diary.present? %><%= children_diary.visit%><% end %></td>
           <td><% if children_diary.present? %><%= children_diary.information %><% end %></td>
           <td><% if children_diary.present? %><%= link_to "削除", children_diary, method: :delete,data: { confirm: "本当に削除しますか?" } %><% end %></td>
       </tr>

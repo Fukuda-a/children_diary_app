@@ -4,8 +4,7 @@ class ChildrenDiariesController < ApplicationController
   end
 
   def index
-    @children = Child.all
-    @children_diaries = ChildrenDiary.all
+    @children_diaries = ChildrenDiary.where(date: Time.current.all_day)
   end
   
   def destroy

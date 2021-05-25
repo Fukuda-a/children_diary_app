@@ -1,0 +1,27 @@
+<h1>日誌詳細</h1>
+    <table border="1" width="1000">
+        <% @child = Child.find_by(id: @children_diary.children_id) %>
+        <% @user = User.find_by(id: @children_diary.user_id)%>
+        <thead>
+        <tr>
+          <th>児童名</th>
+          <th>日付</th>
+          <th>日誌内容</th>
+          <th>入力者名</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+         <td><%= @child.name%></td>
+         <td><%= l @children_diary.date%></td>
+         <td>
+             <%if @children_diary.living.present?%><%= "(生活状況)   #{@children_diary.living}"%><%end%>
+             <%if @children_diary.health.present?%><%= "(健康状況)   #{@children_diary.health}"%><%end%>
+             <%if @children_diary.visit.present?%><%= "(面会状況)   #{@children_diary.visit}"%><%end%>
+             <%if @children_diary.information.present?%><%= "(共有事項)   #{@children_diary.information}"%><%end%>
+         </td>
+         <td><%= @user.username%></td>
+        </tr>
+    </tbody>
+</table>
+    

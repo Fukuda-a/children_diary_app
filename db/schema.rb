@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 2021_04_30_094801) do
 
   create_table "children", force: :cascade do |t|
     t.string "name"
-    t.string "birthday"
+    t.date "birthday"
     t.string "child_centers_name"
     t.integer "child_number"
     t.datetime "created_at", precision: 6, null: false

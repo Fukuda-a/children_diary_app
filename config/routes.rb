@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   get '/information', to: 'children_diaries#information'
   get '/pdf', to: 'post_pdf#index'
   
+  get '/diary_search', to: 'children_diaries#index'
+  
   
   resources :children
   resources :children_diaries

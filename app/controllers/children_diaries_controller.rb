@@ -2,9 +2,14 @@ class ChildrenDiariesController < ApplicationController
   def home
     @children_diary = ChildrenDiary.new
   end
+  
+  def show
+    @children_diary = ChildrenDiary.find(params[:id])
+  end
 
   def index
-    @children_diaries = ChildrenDiary.where(date: Time.current.all_day)
+    #@children_diaries = ChildrenDiary.where(date: Time.current.all_day)
+    @diaries = ChildrenDiary.search(params[:date])
   end
   
   def destroy
@@ -34,21 +39,40 @@ class ChildrenDiariesController < ApplicationController
   end
   
   def new
-    @children_diary = ChildrenDiary.new
+      @children_diary = ChildrenDiary.new
   end
   
+
   def create
+    #@children_diary = ChildrenDiary.find(params[:children_diary][:children_id])
+    if @children_diary.present?
+      if @children_diary.update!(children_diary_params)
+        flash[:success] = "日誌が上書きされました"
+        render "children_diaries/show"
+      else
+        render 'children_diaries/index'
+      end
+    else
       @children_diary = ChildrenDiary.new(children_diary_params)
       @child = Child.find_by(id: params[:children_diary][:children_id])
       @children_diary.group_id = @child.group_id
       @children_diary.group_number = @child.group_number
       if @children_diary.save!
         flash[:success] = "記録が作成されました"
-        redirect_to "/home"
+        render "children_diaries/show"
       else
         flash.now[:alert] = "日付を選択してください"
         render 'home'
       end
+    end
+  end
+  
+  def edit
+     @children_diary = ChildrenDiary.find(params[:children_diary][:children_id])
+  end
+  
+  def search
+    @children_diaries = ChildrenDiary.search(params[:diary])
   end
   
 

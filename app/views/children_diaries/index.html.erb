@@ -1,21 +1,44 @@
-<h1>児童状況一覧</h1>
-  <table border="1" width="1000">
+<h1 class="diary-index">児童状況一覧</h1>
+
+  <div class="search">
+    <%= form_with url: diary_search_path, method: :get, local: true do |f| %>
+  　   <%= f.date_field :date %>
+    　<%= f.submit "検索" %>
+    <% end %>
+  </div>
+  
+  <table border="1" >
+  <% unless @diaries.present? %>
+    <h2 class = "seach-result">検索結果はありません</h2>
+  <% else %>
+  <thead>
     <tr>
-      <th>名前</th>
+      <th>児童名</th>
       <th>生活状況</th>
       <th>健康状況</th>
       <th>面会状況</th>
       <th>共有事項</th>
+      <th>年月日</th>
+      <th> </th>
+      <th> </th>
     </tr>
-     <% @children_diaries.each do |children_diary| %>
-      <% child = Child.find_by(id: children_diary.children_id) %>
+  </thead>
+  <tbody>
+    <% @diaries.each do |diary| %>
+      <% child = Child.find_by(id: diary.children_id) %>
       <tr>
-          <td><% if children_diary.present? %><%=child.name %><% end %></td>  
-          <td><% if children_diary.present? %><%= children_diary.living %><% end %></td>
-          <td><% if children_diary.present? %><%= children_diary.health%><% end %></td>
-          <td><% if children_diary.present? %><%= children_diary.visit%><% end %></td>
-          <td><% if children_diary.present? %><%= children_diary.information %><% end %></td>
-          <td><% if children_diary.present? %><%= link_to "削除", children_diary, method: :delete,data: { confirm: "本当に削除しますか?" } %><% end %></td>
+        <td><%= child.name %></td>
+        <td><%= diary.living %></td>
+        <td><%= diary.health %></td>
+        <td><%= diary.visit %></td>
+        <td><%= diary.information %></td>
+        <td><%= l(diary.date,format: :short) %></td>
+        <td><%= link_to "詳細を見る",diary,method: :get %></td>
+        <td><%= link_to "削除",diary, method: :delete %></td>
       </tr>
-      <% end %>
-  </table>
+    <% end %>
+  </tbody>
+  <% end %>
+</table>
+
+<%= link_to "日誌印刷",  post_pdf_index_url(format: "pdf") %>

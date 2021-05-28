@@ -13,3 +13,80 @@
  *= require_tree . 
  *= require_self
  */
+
+
+.headder-link{
+  font-size: 15px;
+  text-align: center;
+  padding:  10px;
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #dcdcdc;
+  color: mediumseagreen;
+}
+
+.footer{
+  font-size: 15px;
+  text-align: center;
+  padding:  10px;
+  margin-top: 45px;
+  background-color: #dcdcdc;
+}
+
+.footer-link{
+  padding:  10px;
+  display: inline;
+  margin-right: 10px;
+}
+
+.welcome-user{
+  font-size: 25px;
+  color: gray;
+}
+
+/*children_diary*/
+
+.field{
+  text-align: center;
+
+}
+
+.page-name{
+  text-align: center;
+}
+
+.textarea {
+    height: 100px;
+    margin-bottom: 5px;
+  }
+
+/*children_diary_index*/
+.diary-index{
+  text-align: center;
+}
+
+.search{
+  text-align: center;
+}
+
+.seach-result{
+  color: orange;
+  text-align: center;
+}
+
+/*table*/
+table {
+  
+   text-align: center; 
+   margin: auto;
+}
+ 
+th {
+    background-color: paleturquoise;  /* 背景色指定 */
+    padding: 5px;
+    text-align: center;
+}
+
+td {
+  padding: 5px 0px;
+}

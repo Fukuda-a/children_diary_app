@@ -18,22 +18,21 @@
     <header>
       <nav>
           <% if user_signed_in? %>
+          <ul class = "headder-link">
             <strong><%= link_to current_user.username, pages_show_path %></strong>
-            <%= link_to 'プロフィール変更', edit_user_registration_path %>
-            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
-            <%= link_to '児童一覧', children_path %>
-            <%= link_to '児童状況', "/home" %>
-            <%= link_to '児童状況一覧', children_diaries_path, method: :get  %>
-            <%= link_to "日誌印刷",  post_pdf_index_url(format: "pdf") %>
+              <%= link_to '児童一覧', children_path %>
+              <%= link_to '児童状況', "/home" %>
+              <%= link_to '児童状況一覧', children_diaries_path, method: :get  %>
+              <%= link_to "日誌印刷",  post_pdf_index_url(format: "pdf") %>
             
-              <% if current_user.admin? %>
-                <%= link_to '児童登録', new_child_path %>
-              <% end %>
+                <% if current_user.admin? %>
+                  <%= link_to '児童登録', new_child_path %>
+                <% end %>
           <% else %>
-            <%= link_to '新規登録', new_user_registration_path %>
-            <%= link_to 'ログイン', new_user_session_path %>
+              <%= link_to '新規登録', new_user_registration_path %>
+              <%= link_to 'ログイン', new_user_session_path %>
             
-            
+          </ul>
           <% end %>
       </nav>
     </header>
@@ -46,4 +45,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
+  <footer>
+    <ul class="footer">
+      <p> 社会福祉法人　〇〇園</p>
+      <div class="footer-link">
+      <%= link_to 'プロフィール変更', edit_user_registration_path %>
+      <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+      </div>
+    </ul>
+  </footer>
 </html>

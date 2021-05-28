@@ -1,13 +1,25 @@
-<h1>生活状況</h1>
+<h1 class="page-name">生活状況</h1>
     <tr>
       <td>
-        <%= form_with model: @children_diary, :local => true do |f| %>
+        <% if @children_diary.present?%>
+        test
+          <%= form_for @children_diary do |form| %>
+            <%= form.collection_select(:children_id, @children, :id, :name)%>
+            <%= form.date_field :date %>
+            <%= form.text_area :living, :value => @children_diary.living %>
+            <%= @children_diary.living%>
+          </div>
+          <%= form.submit "保存" %>
+          <% end %>
+        <%else%>
+          <%= form_for(@children_diary, url:{ controller: 'children_diaries', action: 'create'})do |f| %>
           <div class="field">
             <%= f.collection_select(:children_id, @children, :id, :name)%>
             <%= f.date_field :date %>
             <%= f.text_area :living %>
           </div>
           <%= f.submit "保存" %>
+          <% end %>
         <% end %>
       </td>
     </tr>

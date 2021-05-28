@@ -14,10 +14,7 @@
   <thead>
     <tr>
       <th>児童名</th>
-      <th>生活状況</th>
-      <th>健康状況</th>
-      <th>面会状況</th>
-      <th>共有事項</th>
+      <th>日誌内容</th>
       <th>年月日</th>
       <th> </th>
       <th> </th>
@@ -28,10 +25,12 @@
       <% child = Child.find_by(id: diary.children_id) %>
       <tr>
         <td><%= child.name %></td>
-        <td><%= diary.living %></td>
-        <td><%= diary.health %></td>
-        <td><%= diary.visit %></td>
-        <td><%= diary.information %></td>
+        <td>
+             <%if diary.living.present?%><%= "(生活状況)   #{diary.living}"%><%end%>
+             <%if diary.health.present?%><%= "(健康状況)   #{diary.health}"%><%end%>
+             <%if diary.visit.present?%><%= "(面会状況)   #{diary.visit}"%><%end%>
+             <%if diary.information.present?%><%= "(共有事項)   #{diary.information}"%><%end%>
+         </td>
         <td><%= l(diary.date,format: :short) %></td>
         <td><%= link_to "詳細を見る",diary,method: :get %></td>
         <td><%= link_to "削除",diary, method: :delete %></td>

@@ -1,8 +1,7 @@
 class ChildrenController < ApplicationController
   
   def index
-    @children = Child.all 
-    #@child = Children.find(params[:id])
+    @children = Child.all.order(child_number: "DESC")
   end
   
   def show

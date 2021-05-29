@@ -8,6 +8,7 @@ module PracticePdf
     FONT_MEDIUM = 'app/assets/fonts/SourceHanSans-Medium.ttc'
     FONT_NORMAL = 'app/assets/fonts/SourceHanSans-Regular.ttc'
 
+
     def initialize(post_pdf)
       super(page_size: 'A4') # 新規PDF作成
       stroke_axis # 座標を表示
@@ -20,9 +21,7 @@ module PracticePdf
       move_down 50
       contents
     end
-    
-    
-    
+
     def header
       text '児童状況一覧',size: 50
       move_down 10

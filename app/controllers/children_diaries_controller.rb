@@ -47,6 +47,11 @@ class ChildrenDiariesController < ApplicationController
     #@children_diary = ChildrenDiary.find(params[:children_diary][:children_id])
     if @children_diary.present?
       if @children_diary.update!(children_diary_params)
+         @children_diary_logs = ChildrenDiaryLog.new(living: @children_diary.living, health: @children_diary.health,
+                                                    visit: @children_diary.visit, information: @children_diary.information,
+                                                    children_id: @children_diary.children_id, group_id: @children_diary.group_id,
+                                                    date: @children_diary.date, user: @children_diary.user)
+         @children_diary_logs.save!
         flash[:success] = "日誌が上書きされました"
         render "children_diaries/show"
       else
@@ -57,10 +62,10 @@ class ChildrenDiariesController < ApplicationController
       @child = Child.find_by(id: params[:children_diary][:children_id])
       @children_diary.group_id = @child.group_id
       @children_diary.group_number = @child.group_number
-      @children_diary_logs = ChildrenDiaryLog.new(living: @children_diary.living,health: @children_diary.health,
-                                                    visit: @children_diary.visit,information: @children_diary.information,
-                                                    children_id: @children_diary.children_id,group_id: @children_diary.group_id,
-                                                    date: @children_diary.date,user: @children_diary.user)
+      @children_diary_logs = ChildrenDiaryLog.new(living: @children_diary.living, health: @children_diary.health,
+                                                    visit: @children_diary.visit, information: @children_diary.information,
+                                                    children_id: @children_diary.children_id, group_id: @children_diary.group_id,
+                                                    date: @children_diary.date, user: @children_diary.user)
       if @children_diary.save!
         flash[:success] = "記録が作成されました"
         @children_diary_logs.save!

@@ -3,6 +3,7 @@
     <td>
       <%= form_with model: @children_diary, :local => true do |f| %>
         <div class="field">
+          <%= f.collection_select(:children_id, @children, :id, :name)%>
           <%= f.date_field :date %>
           <div class="text-area">
             <%= f.text_area :information %>

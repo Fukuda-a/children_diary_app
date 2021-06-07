@@ -44,20 +44,6 @@ class ChildrenDiariesController < ApplicationController
   
 
   def create
-    #@children_diary = ChildrenDiary.find(params[:children_diary][:children_id])
-    if @children_diary.present?
-      if @children_diary.update!(children_diary_params)
-         @children_diary_logs = ChildrenDiaryLog.new(living: @children_diary.living, health: @children_diary.health,
-                                                    visit: @children_diary.visit, information: @children_diary.information,
-                                                    children_id: @children_diary.children_id, group_id: @children_diary.group_id,
-                                                    date: @children_diary.date, user: @children_diary.user)
-         @children_diary_logs.save!
-        flash[:success] = "日誌が上書きされました"
-        render "children_diaries/show"
-      else
-        render 'children_diaries/index'
-      end
-    else
       @children_diary = ChildrenDiary.new(children_diary_params)
       @child = Child.find_by(id: params[:children_diary][:children_id])
       @children_diary.group_id = @child.group_id
@@ -66,19 +52,36 @@ class ChildrenDiariesController < ApplicationController
                                                     visit: @children_diary.visit, information: @children_diary.information,
                                                     children_id: @children_diary.children_id, group_id: @children_diary.group_id,
                                                     date: @children_diary.date, user: @children_diary.user)
-      if @children_diary.save!
+      if @children_diary.save
         flash[:success] = "記録が作成されました"
         @children_diary_logs.save!
         render "children_diaries/show"
       else
-        flash.now[:alert] = "日付を選択してください"
-        render 'home'
+        flash[:alert] = "日付を選択してください"
+        if @children_diary.living.present?
+          redirect_to "/living"
+        elsif @children_diary.health.present?
+          redirect_to "/health"
+        elsif @children_diary.visit.present?
+          redirect_to "/visit"
+        elsif @children_diary.information.present?
+          redirect_to "/information"
+        end
       end
-    end
   end
   
   def edit
-     @children_diary = ChildrenDiary.find(params[:children_diary][:children_id])
+     @children_diary = ChildrenDiary.find(params[:id])
+  end
+  
+  def update
+    @children_diary = ChildrenDiary.find(params[:id])
+    if @children_diary.update(children_diary_params)
+      flash[:success] = "内容が追加・更新されました"
+      redirect_to @children_diary
+    else
+      render 'edit'
+    end
   end
   
   def search

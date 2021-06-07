@@ -1,7 +1,7 @@
 class ChildrenController < ApplicationController
   
   def index
-    @children = Child.all.order(child_number: "DESC")
+    @children = Child.where.not(group_id: "4").order(group_number: "DESC")
   end
   
   def show

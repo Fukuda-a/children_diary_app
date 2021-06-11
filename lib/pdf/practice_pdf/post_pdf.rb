@@ -15,6 +15,8 @@ module PracticePdf
  
       @diaries = ChildrenDiary.all
       
+      
+      
       font FONT_NORMAL
       
       header
@@ -32,8 +34,17 @@ module PracticePdf
       @diaries.each do |diary|
         child = Child.find_by(id: diary.children_id)
         
-        table  [["児童名", "生活状況", "健康状況", "面会状況","共有事項"],
-        [child.name, diary.living, diary.health, diary.visit, diary.information]
+        table  [["児童名", "日誌内容"],
+        [child.name,
+        if diary.living.present?
+          "(生活状況)   #{diary.living}"
+        elsif diary.health.present?
+          "(健康状況)   #{diary.health}"
+        elsif diary.visit.present?
+          "(面会状況)   #{diary.visit}"
+        elsif diary.information.present?
+          "(共有事項)   #{diary.information}"
+        end]
         ]
       end
     end

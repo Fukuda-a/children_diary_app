@@ -1,7 +1,4 @@
 class ChildrenDiariesController < ApplicationController
-  def home
-    @children_diary = ChildrenDiary.new
-  end
   
   def show
     @children_diary = ChildrenDiary.find(params[:id])

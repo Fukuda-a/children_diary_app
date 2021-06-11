@@ -1,6 +1,4 @@
-<h1 class="diary-index">児童状況一覧</h1>
-
-  <div class="search">
+<div class="search">
     <%= form_with url: diary_search_path, method: :get, local: true do |f| %>
   　   <%= f.date_field :date %>
     　<%= f.submit "検索" %>
@@ -16,7 +14,6 @@
       <th>児童名</th>
       <th>日誌内容</th>
       <th>年月日</th>
-      <th> </th>
       <th> </th>
       <th> </th>
     </tr>
@@ -35,17 +32,10 @@
         <td><%= l(diary.date,format: :short) %></td>
         <td><%= link_to "詳細を見る",diary,method: :get %></td>
         <td><%= link_to "削除",diary, method: :delete %></td>
-        <td><%= link_to "追加・更新", edit_children_diary_path(diary.id) %></td>
-        
       </tr>
     <% end %>
   </tbody>
   <% end %>
 </table>
 
-<%= form_with model: @children_diary do |f| %>
-<form class="button_to" method="get" action="post_pdf_index_url(format: "pdf")"><input type="submit" value="印刷" /></form>
-<%end%>
-
-<%= link_to "日誌印刷",  post_pdf_index_url(format: "pdf",:children_diary => @diaries) %>
-
+<%= link_to "日誌印刷",  post_pdf_index_url(format: "pdf") %>

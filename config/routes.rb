@@ -11,8 +11,11 @@ Rails.application.routes.draw do
   get '/visit', to: 'children_diaries#visit'
   get '/information', to: 'children_diaries#information'
   get '/pdf', to: 'post_pdf#index'
+  get '/home_pdf', to: 'post_pdf#home'
   
   get '/diary_search', to: 'children_diaries#index'
+  
+  get 'pdf', to: 'post_pdf#index'
   
   
   resources :children

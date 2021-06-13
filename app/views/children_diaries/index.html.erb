@@ -43,9 +43,5 @@
   <% end %>
 </table>
 
-<%= form_with model: @children_diary do |f| %>
-<form class="button_to" method="get" action="post_pdf_index_url(format: "pdf")"><input type="submit" value="印刷" /></form>
-<%end%>
-
 <%= link_to "日誌印刷",  post_pdf_index_url(format: "pdf",:children_diary => @diaries, :search_date => params[:date]) %>
 

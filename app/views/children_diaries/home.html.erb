@@ -1,13 +1,19 @@
 
-   <h1>〇〇施設　養護日誌</h1>
-    <div class="home">
-     <%= link_to '生活状況', "/living" %>
-     <%= image_tag 'IMG_7699.heic'  %>
-     <%= link_to '健康状況', "/health" %>
-     <%= image_tag 'IMG_2476.TIF'  %>
-     <%= link_to '面会状況', "/visit" %>
-     <%= image_tag 'IMG_2477.TIF'  %>
-     <%= link_to '共有事項', "/information" %>
-     <%= image_tag 'IMG_2478.TIF'  %>
+   <h1 class="page-name">〇〇施設　養護日誌</h1>
+    <div class="home_field">
+     <p><%= link_to '生活状況', "/living" %></p>
+     <p><%= image_tag 'children.jpg' ,width: '50%', height: '30%' %></p>
+    </div>
+    <div class="home_field">
+     <p><%= link_to '健康状況', "/health" %></p>
+     <p><%= image_tag 'health.jpg',width: '50%', height: '30%'  %></p>
+    </div>
+    <div class="home_field">
+     <p><%= link_to '面会状況', "/visit" %></p>
+     <p><%= image_tag 'flower.jpg',width: '50%', height: '30%'  %></p>
+    </div>
+    <div class="home_field">
+     <p><%= link_to '共有事項', "/information" %></p>
+     <p><%= image_tag 'information.jpg',width: '50%', height: '30%'  %></p>
     </div>
  

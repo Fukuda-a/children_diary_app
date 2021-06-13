@@ -1,0 +1,30 @@
+
+<h1 class="page-name">追加・更新</h1>
+<div　class="edit-name"><%if @children_diary.living.present?%>
+                <%= "生活状況" %>
+            <%elsif @children_diary.health.present?%>
+                <%= "健康状況" %>
+            <%elsif @children_diary.visit.present?%>
+                <%= "面会状況" %>
+            <%elsif @children_diary.information.present?%>
+                <%= "共有事項" %>
+            <%end%>
+            </div>
+    <tr>
+      <td>
+        <%= form_with model: @children_diary do |f| %>
+          <div class="field">
+            <%if @children_diary.living.present?%>
+                <%= f.text_area :living %>
+            <%elsif @children_diary.health.present?%>
+                <%= f.text_area :health %>
+            <%elsif @children_diary.visit.present?%>
+                <%= f.text_area :visit %>
+            <%elsif @children_diary.information.present?%>
+                <%= f.text_area :information %>
+            <%end%>
+          </div>
+        <%= f.submit "更新" %>
+        <% end %>
+      </td>
+    </tr>

@@ -8,4 +8,8 @@
 Group.create(group_name: "girl",group_number: "1")
 Group.create(group_name: "boy",group_number: "2")
 Group.create(group_name: "baby",group_number: "3")
+Group.create(group_name: "information",group_number: "4")
+
+Child.create(name: "[共有事項]",birthday: "Mon, 00 00 0000",child_centers_name: "0",
+    child_number: "0",group_id: "4",group_number: "4")
 

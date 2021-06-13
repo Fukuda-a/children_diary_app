@@ -8,34 +8,45 @@ module PracticePdf
     FONT_MEDIUM = 'app/assets/fonts/SourceHanSans-Medium.ttc'
     FONT_NORMAL = 'app/assets/fonts/SourceHanSans-Regular.ttc'
 
-    def initialize
+
+    def initialize(post_pdf)
       super(page_size: 'A4') # 新規PDF作成
       stroke_axis # 座標を表示
+ 
+      @diaries = post_pdf
+      
+      
+      
+      font FONT_NORMAL
       
       header
+      move_down 50
+      contents
     end
-    
+
     def header
-      font FONT
-      text_box 'ヘッダー'
+      text '児童状況一覧',size: 50
+      move_down 10
+      text '　月　日分',size: 30
+    end
 
-      font FONT_BOLD
-      text_box 'ヘッダー', at: [0, 730], size: 10
-
-      font FONT_EXTRALIGHT
-      text_box 'ヘッダー', at: [0, 700], size: 20
-
-      font FONT_HEAVY
-      text_box 'ヘッダー', at: [0, 650], size: 30
-
-      font FONT_LIGHT
-      text_box 'ヘッダー', at: [0, 600], size: 40
-
-      font FONT_MEDIUM
-      text_box 'ヘッダー', at: [0, 550], size: 50
-
-      font FONT_NORMAL
-      text_box 'ヘッダー', at: [0, 500], size: 60
+    def contents
+      @diaries.each do |diary|
+        child = Child.find_by(id: diary.children_id)
+        
+        table  [["児童名", "日誌内容"],
+        [child.name,
+        if diary.living.present?
+          "(生活状況)   #{diary.living}"
+        elsif diary.health.present?
+          "(健康状況)   #{diary.health}"
+        elsif diary.visit.present?
+          "(面会状況)   #{diary.visit}"
+        elsif diary.information.present?
+          "(共有事項)   #{diary.information}"
+        end]
+        ]
+      end
     end
   end
 end

@@ -18,5 +18,8 @@ module DiaryApp
     
         # 以下の記述を追記
     config.eager_load_paths += %W(#{Rails.root}/lib/pdf)
+    
+     # デフォルトのロケールを日本（ja）に設定
+    config.i18n.default_locale = :ja
   end
 end

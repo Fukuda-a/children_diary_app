@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="ja">
-  
-<head>
-<title>児童一覧</title>
-</head>
-<body>
-  <h1>児童一覧</h1>
+
+  <h1 class="page-name">児童一覧</h1>
   <table border="1" width="600">
     <tr>
       <th>名前</th>
@@ -17,7 +11,7 @@
     <tr>
       <td><%=child.name%></td>
   
-      <td><%=child.birthday%></td>
+      <td><%=l child.birthday%></td>
   
       <td><%=child.child_centers_name%></td>
    
@@ -29,5 +23,3 @@
       <% end %>
     </tr>
   </table>
-</body>
-</html>

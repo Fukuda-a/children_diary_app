@@ -1,4 +1,4 @@
-<h1>生活状況</h1>
+<h1 class="page-name">生活状況</h1>
     <tr>
       <td>
         <%= form_with model: @children_diary, :local => true do |f| %>
@@ -7,7 +7,7 @@
             <%= f.date_field :date %>
             <%= f.text_area :living %>
           </div>
-          <%= f.submit "保存" %>
+        <%= f.submit "保存" %>
         <% end %>
       </td>
     </tr>

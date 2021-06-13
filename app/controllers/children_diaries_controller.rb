@@ -1,11 +1,12 @@
 class ChildrenDiariesController < ApplicationController
-  def home
-    @children_diary = ChildrenDiary.new
+  
+  def show
+    @children_diary = ChildrenDiary.find(params[:id])
   end
 
   def index
-    @children = Child.all
-    @children_diaries = ChildrenDiary.all
+    #@children_diaries = ChildrenDiary.where(date: Time.current.all_day)
+    @diaries = ChildrenDiary.search(params[:date])
   end
   
   def destroy
@@ -35,26 +36,54 @@ class ChildrenDiariesController < ApplicationController
   end
   
   def new
-    @children_diary = ChildrenDiary.new
+      @children_diary = ChildrenDiary.new
   end
   
+
   def create
       @children_diary = ChildrenDiary.new(children_diary_params)
       @child = Child.find_by(id: params[:children_diary][:children_id])
       @children_diary.group_id = @child.group_id
       @children_diary.group_number = @child.group_number
-      @children_diary_logs = ChildrenDiaryLog.new(living: @children_diary.living,health: @children_diary.health,
-                                                    visit: @children_diary.visit,information: @children_diary.information,
-                                                    children_id: @children_diary.children_id,group_id: @children_diary.group_id,
-                                                    date: @children_diary.date,user: @children_diary.user)
-      if @children_diary.save!
+      @children_diary_logs = ChildrenDiaryLog.new(living: @children_diary.living, health: @children_diary.health,
+                                                    visit: @children_diary.visit, information: @children_diary.information,
+                                                    children_id: @children_diary.children_id, group_id: @children_diary.group_id,
+                                                    date: @children_diary.date, user: @children_diary.user)
+      if @children_diary.save
         flash[:success] = "記録が作成されました"
         @children_diary_logs.save!
-        redirect_to "/home"
+        render "children_diaries/show"
       else
-        flash.now[:alert] = "日付を選択してください"
-        render 'home'
-      end 
+        flash[:alert] = "日付を選択してください"
+        if @children_diary.living.present?
+          redirect_to "/living"
+        elsif @children_diary.health.present?
+          redirect_to "/health"
+        elsif @children_diary.visit.present?
+          redirect_to "/visit"
+        elsif @children_diary.information.present?
+          redirect_to "/information"
+        end
+      end
+  end
+  
+  def edit
+     @children_diary = ChildrenDiary.find(params[:id])
+  end
+  
+  def update
+    @children_diary = ChildrenDiary.find(params[:id])
+    if @children_diary.update(children_diary_params)
+      flash[:success] = "内容が追加・更新されました"
+      redirect_to @children_diary
+    else
+      render 'edit'
+    end
+  end
+  
+  def search
+    @children_diaries = ChildrenDiary.search(params[:diary])
+
   end
   
 

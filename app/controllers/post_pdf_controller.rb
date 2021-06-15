@@ -4,7 +4,7 @@ class PostPdfController < ApplicationController
   end
   
   def index
-    @diaries = ChildrenDiary.search(params[:search_date])
+    @diaries = ChildrenDiary.search(params[:search_date]).order(group_number: "DESC")
     @children = Child.all
     respond_to do |format|
       format.pdf do

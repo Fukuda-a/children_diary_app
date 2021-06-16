@@ -1,19 +1,14 @@
-<%= link_to :back do %>
-  <button>戻る</button>
-<%end%>
-
+<%= render 'btn' %>
 <h1 class="page-name">健康状況</h1>
 <tr>
-  <td class="form-area">
-    <%= form_with model: @children_diary, :local => true do |f| %>
-      <div class="field">
-        <%= f.collection_select(:children_id, @children, :id, :name)%>
-        <%= f.date_field :date %>
-        <div>
-        <%= f.text_area :health %>
-        </div>
-      </div>
-    <%= f.submit "保存" %>
-    <% end %>
-  </td>
+  <td>
+        <%= form_with model: @children_diary, :local => true do |f| %>
+          <div class="form-field">
+            <li><%= f.collection_select(:children_id, @children, :id, :name)%></li>
+            <li><%= f.date_field :date %></li>
+            <li><%= f.text_area :health %></li>
+            <li><%= f.submit "保存" %></li>
+          </div>
+        <% end %>
+      </td>
 </tr>

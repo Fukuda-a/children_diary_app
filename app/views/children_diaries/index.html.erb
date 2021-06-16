@@ -33,15 +33,19 @@
              <%if diary.information.present?%><%= "(共有事項)   #{diary.information}"%><%end%>
         </td>
         <td><%= l(diary.date,format: :short) %></td>
-        <td><%= link_to "詳細を見る",diary,method: :get %></td>
-        <td><%= link_to "削除",diary, method: :delete %></td>
-        <td><%= link_to "追加・更新", edit_children_diary_path(diary.id) %></td>
-        
+        <div class="link">
+          <td><%= link_to "詳細を見る",diary,method: :get %></td>
+          <td><%= link_to "削除",diary, method: :delete %></td>
+          <td><%= link_to "追加・更新", edit_children_diary_path(diary.id) %></td>
+        </div>
       </tr>
     <% end %>
   </tbody>
   <% end %>
 </table>
-<div class="pdf-link">
-  <%= link_to "日誌印刷",  post_pdf_index_url(format: "pdf",:children_diary => @diaries, :search_date => params[:date]) %>
+
+<div class="pdf">
+  <div class="btn-pdf">
+    <%= link_to "日誌印刷",  post_pdf_index_url(format: "pdf",:children_diary => @diaries, :search_date => params[:date]),class: "link" %>
+  </div>
 </div>

@@ -1,11 +1,15 @@
+<%= link_to :back do %>
+  <button>戻る</button>
+<%end%>
+
 <h1 class="page-name">面会状況</h1>
   <tr>
-    <td>
+    <td class="form-area">
       <%= form_with model: @children_diary, :local => true do |f| %>
         <div class="field">
           <%= f.collection_select(:children_id, @children, :id, :name)%>
           <%= f.date_field :date %>
-          <div class="text-area">
+          <div>
             <%= f.text_area :visit %>
           </div>
         </div>

@@ -1,12 +1,16 @@
-<h1>日誌詳細</h1>
-    <table border="1" width="1000">
+<%= link_to :back do %>
+  <button>戻る</button>
+<%end%>
+
+<h1 class="page-name">日誌詳細</h1>
+    <table border="1">
         <% @child = Child.find_by(id: @children_diary.children_id) %>
         <% @user = User.find_by(id: @children_diary.user_id)%>
         <thead>
         <tr>
           <th>児童名</th>
           <th>日付</th>
-          <th>日誌内容</th>
+          <th class="table-diary">日誌内容</th>
           <th>入力者名</th>
         </tr>
     </thead>

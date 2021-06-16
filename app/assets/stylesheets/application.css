@@ -14,6 +14,24 @@
  *= require_self
  */
 
+/*devise*/
+.actions {
+    text-align: center;
+}
+
+.devise-link{
+  text-align: center;
+  font-size: 15px;
+  margin: 50px;
+
+  
+}
+
+.notice{
+  text-align: center;
+  font-size: 15px;
+  color: gray;
+}
 
 .headder-link{
   font-size: 15px;
@@ -34,12 +52,12 @@
 }
 
 .footer-link{
-  padding:  10px;
+  padding:  20px;
   display: inline;
-  margin-right: 10px;
 }
 
 .welcome-user{
+  text-align: center;
   font-size: 25px;
   color: gray;
 }
@@ -63,27 +81,32 @@
     
 }
 
-.field{
+.form-field{
   text-align: center;
-
+  list-style: none;
+  margin-bottom: 20px;
 }
 
 .page-name{
   text-align: center;
+  margin-bottom: 40px;
 }
 
-.textarea {
-    height: 100px;
+textarea {
+    height: 300px;
+    width: 40%; 
     margin-bottom: 5px;
   }
-
-/*children_diary_index*/
-.diary-index{
+  
+.edit-name{
   text-align: center;
+  margin-bottom: 5px;
 }
 
+/*children_diary_index*/
 .search{
   text-align: center;
+  margin-bottom: 30px;
 }
 
 .seach-result{
@@ -91,9 +114,13 @@
   text-align: center;
 }
 
+.pdf-link{
+    text-align: center;
+}
+
 /*table*/
 .table-diary{
-  width: 50%;                 /* 幅指定 */
+  width: 50%;  /* 幅指定 */
 }
 
 table {
@@ -113,4 +140,12 @@ th {
 td {
   padding: 5px 0px;
   word-wrap: normal;
+}
+
+
+/*child*/
+
+.c_signup{
+  text-align: center; 
+  list-style: none;
 }

@@ -23,8 +23,6 @@
               <%= link_to '児童一覧', children_path %>
               <%= link_to '児童状況', "/home" %>
               <%= link_to '児童状況一覧', children_diaries_path, method: :get  %>
-              <%= link_to "日誌印刷",  post_pdf_index_url(format: "pdf") %>
-            
                 <% if current_user.admin? %>
                   <%= link_to '児童登録', new_child_path %>
                 <% end %>

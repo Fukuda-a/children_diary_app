@@ -46,18 +46,21 @@
 
 /*children_diary*/
 
+.home{
+  text-align: center;
+}
 .home_field{
   display: inline-block;      /* インラインブロック要素にする */
-    background-color:  #f5f5f5;    /* 背景色指定 */
-    height:  300px;             /* 高さ指定 */
-    width: 50%;                 /* 幅指定 */
-    margin: 10px;
-
+    background-color:  #eae9ed;    /* 背景色指定 */
+    height:  50%;             /* 高さ指定 */
+    width: 40%;                 /* 幅指定 */
+    margin: 15px;
 }
-.home_field p{
-  text-align: center;
-  margin: 0; 
-  padding: 0;
+
+.home_field_link{
+    text-align: center;
+    height:  70%;             /* 高さ指定 */
+    
 }
 
 .field{
@@ -89,16 +92,20 @@
 }
 
 /*table*/
+.table-diary{
+  width: 50%;                 /* 幅指定 */
+}
+
 table {
   
    text-align: center; 
    margin: auto;
    table-layout: fixed;
-   width: 1100px;
+   width: 1000px;
 }
  
 th {
-    background-color: paleturquoise;  /* 背景色指定 */
+    background-color: #c8c9ce;  /* 背景色指定 */
     padding: 5px;
     text-align: center;
 }

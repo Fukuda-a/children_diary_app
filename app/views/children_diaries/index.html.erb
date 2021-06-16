@@ -7,14 +7,14 @@
     <% end %>
   </div>
   
-  <table border="1" >
+  <table border="1">
   <% unless @diaries.present? %>
     <h2 class = "seach-result">検索結果はありません</h2>
   <% else %>
   <thead>
     <tr>
       <th>児童名</th>
-      <th>日誌内容</th>
+      <th class="table-diary">日誌内容</th>
       <th>年月日</th>
       <th> </th>
       <th> </th>
@@ -31,7 +31,7 @@
              <%if diary.health.present?%><%= "(健康状況)   #{diary.health}"%><%end%>
              <%if diary.visit.present?%><%= "(面会状況)   #{diary.visit}"%><%end%>
              <%if diary.information.present?%><%= "(共有事項)   #{diary.information}"%><%end%>
-         </td>
+        </td>
         <td><%= l(diary.date,format: :short) %></td>
         <td><%= link_to "詳細を見る",diary,method: :get %></td>
         <td><%= link_to "削除",diary, method: :delete %></td>

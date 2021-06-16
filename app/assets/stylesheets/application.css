@@ -76,6 +76,7 @@
     height:  50%;             /* 高さ指定 */
     width: 40%;                 /* 幅指定 */
     margin: 15px;
+    border-radius: 30px;
 }
 
 .home_field_link{
@@ -165,7 +166,18 @@ textarea {
   font-weight: bold;
 }
 
+.index-link{
+  color: black;
+  font-weight: bold;
+}
 
+input[type="submit"] {
+  /*margin-top: 20px;*/
+  /*margin-bottom: 20px;*/
+  border: none; 
+  background-color: #dcdcdc;
+
+}
 
 /*children_diary_index*/
 .search{

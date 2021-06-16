@@ -34,9 +34,9 @@
         </td>
         <td><%= l(diary.date,format: :short) %></td>
         <div class="link">
-          <td><%= link_to "詳細を見る",diary,method: :get %></td>
-          <td><%= link_to "削除",diary, method: :delete %></td>
-          <td><%= link_to "追加・更新", edit_children_diary_path(diary.id) %></td>
+          <td><%= link_to "詳細を見る",diary,method: :get,class: "index-link" %></td>
+          <td><%= link_to "削除",diary, method: :delete,class: "index-link" %></td>
+          <td><%= link_to "追加・更新", edit_children_diary_path(diary.id),class: "index-link" %></td>
         </div>
       </tr>
     <% end %>

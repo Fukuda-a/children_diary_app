@@ -8,7 +8,7 @@
             <li><%= f.collection_select(:children_id, @children, :id, :name)%></li>
             <li><%= f.date_field :date %></li>
             <li><%= f.text_area :living %></li>
-            <li><%= f.submit "保存" %></li>
+            <li class="btn"><%= f.submit "保存" %></li>
           </div>
         <% end %>
       </td>

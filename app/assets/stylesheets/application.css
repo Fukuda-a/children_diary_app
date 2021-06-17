@@ -17,6 +17,10 @@
 /*devise*/
 .actions {
     text-align: center;
+    background-color: #dcdcdc;
+    width: 30px;
+
+
 }
 
 .devise-link{
@@ -34,13 +38,14 @@
 }
 
 .headder-link{
+  font-weight: bold;
   font-size: 15px;
   text-align: center;
   padding:  10px;
   display: flex;
   justify-content: space-evenly;
   background-color: #dcdcdc;
-  color: mediumseagreen;
+  color:black;
 }
 
 .footer{
@@ -52,8 +57,10 @@
 }
 
 .footer-link{
+  font-weight: bold;
   padding:  20px;
   display: inline;
+  color:black;
 }
 
 .welcome-user{
@@ -73,6 +80,7 @@
     height:  50%;             /* 高さ指定 */
     width: 40%;                 /* 幅指定 */
     margin: 15px;
+    border-radius: 30px;
 }
 
 .home_field_link{
@@ -90,6 +98,7 @@
 .page-name{
   text-align: center;
   margin-bottom: 40px;
+  color: #a1acaf;
 }
 
 textarea {
@@ -101,6 +110,77 @@ textarea {
 .edit-name{
   text-align: center;
   margin-bottom: 5px;
+}
+
+
+.btn {
+  display: inline-block;
+  max-width: 180px;
+  text-align: left;
+  background-color: #dcdcdc;
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 16px 8px 16px;
+  border-radius: 4px;
+  position: relative;
+  margin-top: 30px;
+}
+
+.btn:before {
+  font-family: "FontAwesome";
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  margin-top: -8px;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+.pdf{
+  text-align: center;
+}
+.btn-pdf {
+  display: inline-block;
+  max-width: 180px;
+  text-align: center;
+  background-color: #dcdcdc;
+  text-decoration: none;
+  padding: 8px;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+.btn-pdf:before {
+  font-family: "FontAwesome";
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  margin-top: -8px;
+}
+
+.btn-pdf:hover {
+  opacity: 0.8;
+}
+
+
+.link {
+  color: black;
+  font-weight: bold;
+}
+
+.index-link{
+  color: #46b3ce;
+}
+
+input[type="submit"] {
+  /*margin-top: 20px;*/
+  /*margin-bottom: 20px;*/
+  border: none; 
+  background-color: #dcdcdc;
+
 }
 
 /*children_diary_index*/

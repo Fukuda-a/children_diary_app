@@ -6,18 +6,19 @@
       <th>誕生日</th>
       <th>児童相談所名</th>
       <th>児童番号</th>
+      <th></th>
+      <th></th>
     </tr>
       <% @children.each do |child| %>
     <tr>
       <td><%=child.name%></td>
-  
       <td><%=l child.birthday%></td>
-  
       <td><%=child.child_centers_name%></td>
-   
       <td><%=child.child_number%></td>
+      <td><%= link_to "詳細", child,method: :get,class: "index-link"%></td>
+      <td><%= link_to "更新", edit_child_path(child.id),class: "index-link"%></td>
         <% if current_user.admin? %>
-          <td><%= link_to "削除", child, method: :delete,data: { confirm: "本当に削除しますか?" } %></td>
+          <td><%= link_to "削除", child, method: :delete,data: { confirm: "本当に削除しますか?" } ,class: "index-link"%></td>
         <% end %>
     </tr>
       <% end %>

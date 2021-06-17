@@ -1,3 +1,4 @@
+<%= render 'btn' %>
 
 <h1 class="page-name">追加・更新</h1>
     <h2 class="edit-name">
@@ -12,20 +13,22 @@
         <%end%>
     </h2>
     <tr>
-      <td class="form-area">
+      <td>
         <%= form_with model: @children_diary do |f| %>
-          <div class="field">
-            <%if @children_diary.living.present?%>
-                <%= f.text_area :living %>
-            <%elsif @children_diary.health.present?%>
-                <%= f.text_area :health %>
-            <%elsif @children_diary.visit.present?%>
-                <%= f.text_area :visit %>
-            <%elsif @children_diary.information.present?%>
-                <%= f.text_area :information %>
-            <%end%>
-          </div>
-        <%= f.submit "更新" %>
+          <div class="form-field">
+            <li>
+                <%if @children_diary.living.present?%>
+                    <%= f.text_area :living %>
+                <%elsif @children_diary.health.present?%>
+                    <%= f.text_area :health %>
+                <%elsif @children_diary.visit.present?%>
+                    <%= f.text_area :visit %>
+                <%elsif @children_diary.information.present?%>
+                    <%= f.text_area :information %>
+                <%end%>
+            </li>
+            <li class="btn"><%= f.submit "更新" %></li>
         <% end %>
+          </div>
       </td>
     </tr>

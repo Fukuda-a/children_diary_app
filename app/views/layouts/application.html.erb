@@ -17,20 +17,20 @@
      <!--end -->
     <header>
       <nav>
-        <ul class = "headder-link">
           <% if user_signed_in? %>
-            <strong><%= link_to current_user.username, pages_show_path %></strong>
-              <%= link_to '児童一覧', children_path %>
-              <%= link_to '児童状況', "/home" %>
-              <%= link_to '児童状況一覧', children_diaries_path, method: :get  %>
+          <div class="headder-link">
+            <strong><%= link_to current_user.username,edit_user_registration_path,class: "headder-link" %></strong>
+              <%= link_to '児童一覧', children_path,class: "headder-link" %>
+              <%= link_to '児童状況', "/home",class: "headder-link"%>
+              <%= link_to '児童状況一覧', children_diaries_path, method: :get,class: "headder-link"  %>
                 <% if current_user.admin? %>
-                  <%= link_to '児童登録', new_child_path %>
+                  <%= link_to '児童登録', new_child_path,class: "headder-link" %>
                 <% end %>
           <% else %>
-              <%= link_to '新規登録', new_user_registration_path %>
-              <%= link_to 'ログイン', new_user_session_path %>
-        </ul>
+              <%= link_to '新規登録', new_user_registration_path,class: "headder-link" %>
+              <%= link_to 'ログイン', new_user_session_path,class: "headder-link" %>
           <% end %>
+          </div>
       </nav>
     </header>
     
@@ -45,12 +45,10 @@
   <footer>
     <ul class="footer">
       <p> 社会福祉法人　〇〇園</p>
-      <div class="footer-link">
-        <%= link_to 'プロフィール変更', edit_user_registration_path %>
-      </div>
-      <div class="footer-link">
-        <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
-      </div>
+        <% if user_signed_in? %>
+          <%= link_to 'プロフィール変更', edit_user_registration_path,class: "footer-link" %>
+          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete ,class: "footer-link"%>
+        <%end%>
     </ul>
   </footer>
 </html>

@@ -17,6 +17,10 @@
 /*devise*/
 .actions {
     text-align: center;
+    background-color: #dcdcdc;
+    width: 30px;
+
+
 }
 
 .devise-link{
@@ -94,6 +98,7 @@
 .page-name{
   text-align: center;
   margin-bottom: 40px;
+  color: #a1acaf;
 }
 
 textarea {
@@ -119,6 +124,7 @@ textarea {
   padding: 8px 16px 8px 16px;
   border-radius: 4px;
   position: relative;
+  margin-top: 30px;
 }
 
 .btn:before {
@@ -142,7 +148,6 @@ textarea {
   text-align: center;
   background-color: #dcdcdc;
   text-decoration: none;
-  font-weight: bold;
   padding: 8px;
   border-radius: 4px;
   margin-top: 10px;
@@ -167,8 +172,7 @@ textarea {
 }
 
 .index-link{
-  color: black;
-  font-weight: bold;
+  color: #46b3ce;
 }
 
 input[type="submit"] {

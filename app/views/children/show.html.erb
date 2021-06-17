@@ -1,6 +1,21 @@
-<ul>
-  <li><%= @child.name %></li>
-  <li> <%= l @child.birthday %></li>
-  <li><%= @child.child_centers_name %></li>
-  <li><%= "児童No. #{@child.child_number}" %></li>
-</ul>
+<%= render 'btn' %>
+
+<h1 class="page-name">児童情報</h1>
+    <table border="1">
+        <thead>
+        <tr>
+          <th>名前</th>
+          <th>生年月日</th>
+          <th>児童相談所名</th>
+          <th>児童番号</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+         <td><%= @child.name %></td>
+         <td><%= l @child.birthday %></td>
+         <td><%= @child.child_centers_name %></td>
+         <td><%= "児童No. #{@child.child_number}" %></td>
+        </tr>
+    </tbody>
+</table>

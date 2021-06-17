@@ -23,6 +23,20 @@ class ChildrenController < ApplicationController
       end
   end
   
+  def edit
+     @child = Child.find(params[:id])
+  end
+  
+  def update
+    @child = Child.find(params[:id])
+    if @child.update(child_params)
+      flash[:success] = "児童情報が更新されました"
+      redirect_to @child
+    else
+      render 'edit'
+    end
+  end
+  
   def destroy
     Child.find(params[:id]).destroy
     flash[:success] = "削除されました"

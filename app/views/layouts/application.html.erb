@@ -19,7 +19,7 @@
       <nav>
           <% if user_signed_in? %>
           <div class="headder-link">
-            <strong><%= link_to current_user.username, pages_show_path,class: "headder-link" %></strong>
+            <strong><%= link_to current_user.username,edit_user_registration_path,class: "headder-link" %></strong>
               <%= link_to '児童一覧', children_path,class: "headder-link" %>
               <%= link_to '児童状況', "/home",class: "headder-link"%>
               <%= link_to '児童状況一覧', children_diaries_path, method: :get,class: "headder-link"  %>

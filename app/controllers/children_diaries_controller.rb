@@ -5,7 +5,6 @@ class ChildrenDiariesController < ApplicationController
   end
 
   def index
-    #@children_diaries = ChildrenDiary.where(date: Time.current.all_day)
     @diaries = ChildrenDiary.search(params[:date])
   end
   

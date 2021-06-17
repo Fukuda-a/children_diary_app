@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html lang="ja">
-  <head>
-    <title>児童新規登録</title>
-  </head>
-<body>
-  
-  <h1 class="page-name"> 児童　新規登録</h1>
+<h1 class="page-name"> 児童　新規登録</h1>
 
     <div class="c_signup">
-      <%= form_with(model: @child, local: true) do |f| %>
+      <%= form_with(model: @child,local: true) do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
         <li>
           <%= f.label :"名前" %>
@@ -31,7 +24,5 @@
           <%= f.select :group_number,[['女子',1],['男子',2],['幼児',3]] %>
         </li>
         <li class="btn"><%= f.submit "新規登録" %></li>
+      <%end%>
     </div> 
-  </body>
-</html>
-

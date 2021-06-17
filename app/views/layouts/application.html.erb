@@ -45,8 +45,10 @@
   <footer>
     <ul class="footer">
       <p> 社会福祉法人　〇〇園</p>
-        <%= link_to 'プロフィール変更', edit_user_registration_path,class: "footer-link" %>
-        <%= link_to 'ログアウト', destroy_user_session_path, method: :delete ,class: "footer-link"%>
+        <% if user_signed_in? %>
+          <%= link_to 'プロフィール変更', edit_user_registration_path,class: "footer-link" %>
+          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete ,class: "footer-link"%>
+        <%end%>
     </ul>
   </footer>
 </html>

@@ -65,7 +65,7 @@ Rails.application.configure do
   
   
   # mailer setting
-  config.action_mailer.default_url_options = { protocol: 'https', host:'048b91698c1f46fc8d1eaaf591a76104.vfs.cloud9.ap-northeast-1.amazonaws.com'}
+  config.action_mailer.default_url_options = { protocol: 'https', host:'b94c2135c8bc420eb69992afe77a5780.vfs.cloud9.ap-northeast-1.amazonaws.com'}
   #{ host: 'localhost', port: 3000 }
   
   config.action_mailer.raise_delivery_errors = true

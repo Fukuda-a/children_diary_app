@@ -12,28 +12,28 @@
 
 ActiveRecord::Schema.define(version: 2021_04_30_094801) do
 
-  create_table "children", force: :cascade do |t|
+  create_table "children", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.date "birthday"
     t.string "child_centers_name"
     t.integer "child_number"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "group_id"
     t.integer "group_number"
     t.index ["group_id"], name: "index_children_on_group_id"
   end
 
-  create_table "children_diaries", force: :cascade do |t|
+  create_table "children_diaries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "living"
     t.text "health"
     t.text "visit"
     t.text "information"
-    t.integer "children_id", null: false
-    t.integer "group_id", null: false
-    t.integer "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "children_id", null: false
+    t.bigint "group_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "group_number"
     t.date "date"
     t.index ["children_id"], name: "index_children_diaries_on_children_id"
@@ -41,30 +41,30 @@ ActiveRecord::Schema.define(version: 2021_04_30_094801) do
     t.index ["user_id"], name: "index_children_diaries_on_user_id"
   end
 
-  create_table "children_diary_logs", force: :cascade do |t|
+  create_table "children_diary_logs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "living"
     t.text "health"
     t.text "visit"
     t.text "information"
     t.date "date"
-    t.integer "children_id", null: false
-    t.integer "group_id", null: false
-    t.integer "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "children_id", null: false
+    t.bigint "group_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["children_id"], name: "index_children_diary_logs_on_children_id"
     t.index ["group_id"], name: "index_children_diary_logs_on_group_id"
     t.index ["user_id"], name: "index_children_diary_logs_on_user_id"
   end
 
-  create_table "groups", force: :cascade do |t|
+  create_table "groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "group_name"
     t.integer "group_number"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -82,8 +82,8 @@ ActiveRecord::Schema.define(version: 2021_04_30_094801) do
     t.integer "failed_attempts", default: 0, null: false
     t.string "unlock_token"
     t.datetime "locked_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "provider"
     t.string "uid"
     t.string "username"

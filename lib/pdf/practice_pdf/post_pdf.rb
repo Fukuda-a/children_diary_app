@@ -37,9 +37,9 @@ module PracticePdf
         cells.size = 15
         # 1行目はセンター寄せ
         row(0).align = :center
-        # 1行目の背景色をff7500に
+        # 1行目の背景色
         row(0).background_color = 'c8c9ce'
-        # 1列目の横幅を30に
+        # 1列目の横幅
         columns(0).width = 110
         # 行列の最終の文字を小さく
         columns(-1).row(-1).size = 5
@@ -57,13 +57,13 @@ module PracticePdf
           
           [ child.name,{ content: 
                   if diary.living.present?
-                    "(生活状況)   #{diary.living}"
+                    "【生活状況】   #{diary.living}"
                   elsif diary.health.present?
-                    "(健康状況)   #{diary.health}"
+                    "【健康状況】   #{diary.health}"
                   elsif diary.visit.present?
-                    "(面会状況)   #{diary.visit}"
+                    "【面会状況】　  #{diary.visit}"
                   elsif diary.information.present?
-                    "(共有事項)   #{diary.information}"
+                    "【共有事項】   #{diary.information}"
                   end,
                   colspan: 2 }]]
 

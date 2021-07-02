@@ -48,10 +48,24 @@ class ChildrenDiariesController < ApplicationController
                                                     visit: @children_diary.visit, information: @children_diary.information,
                                                     children_id: @children_diary.children_id, group_id: @children_diary.group_id,
                                                     date: @children_diary.date, user: @children_diary.user)
+
       if @children_diary.save
         flash[:success] = "記録が作成されました"
         @children_diary_logs.save!
         render "children_diaries/show"
+          if @children_diary.information.present?
+            notifier = Slack::Notifier.new(
+              ENV['SLACK_WEBHOOK_URL'],
+              channel: "##{ENV['SLACK_CHANNEL']}",
+              username: '〇〇施設　共有連絡'
+              )
+              notifier.ping "新しい連絡事項があります！
+                      ````
+                       #{@children_diary.information}
+                      ````"
+            
+            #Slack::Notifier.new(ENV['SLACK_WEBHOOK_URL'],"共有連絡", "#{@children_diary}")
+          end
       else
         flash[:alert] = "日付を選択してください"
         if @children_diary.living.present?
@@ -82,8 +96,8 @@ class ChildrenDiariesController < ApplicationController
   
   def search
     @children_diaries = ChildrenDiary.search(params[:diary])
-
   end
+ 
   
 
   

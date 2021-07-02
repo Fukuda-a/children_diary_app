@@ -1,28 +1,4 @@
 <%= render 'btn' %>
 <h1 class="page-name">更新</h1>
 
-        <div class="c_signup">
-          <%= form_with(model: @child, local: true) do |f| %>
-        <li>
-          <%= f.label :"名前" %>
-          <%= f.text_field :name %>
-        </li>
-        <li>
-          <%= f.label :"生年月日" %>
-          <%= f.date_select :birthday, use_month_numbers: true,start_year: (Time.now.year - 20),end_year: Time.now.year, default: Date.new(2000, 1, 1) %>
-        </li>
-        <li>
-          <%= f.label :"児童相談所名" %>
-          <%= f.text_field :child_centers_name %>
-        </li>
-        <li>
-          <%= f.label :"児童番号" %>
-          <%= f.text_field :child_number %>
-        </li>
-        <li>
-          <%= f.label :"所属グループ" %>
-          <%= f.select :group_number,[['女子',1],['男子',2],['幼児',3]] %>
-        </li>
-        <li class="btn"><%= f.submit "更新" %></li>
-      <%end%>
-    </div> 
+   <%= render "form" %>

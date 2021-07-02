@@ -37,6 +37,16 @@
   color: gray;
 }
 
+body {
+    margin: 0;
+    display: flex;
+    flex-flow: column;
+    min-height: 100vh;
+}
+
+main{
+  flex: 1;
+}
 .headder-link{
   font-weight: bold;
   font-size: 15px;
@@ -46,6 +56,11 @@
   justify-content: space-evenly;
   background-color: #dcdcdc;
   color:black;
+}
+.wrapper{
+    min-height: 100vh;
+    position: relative;/*←相対位置*/
+    box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
 }
 
 .footer{

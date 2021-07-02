@@ -26,6 +26,9 @@ gem 'jbuilder', '~> 2.7'
 gem 'prawn'
 gem 'prawn-table'
 
+gem 'slack-notifier'
+gem 'dotenv-rails'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

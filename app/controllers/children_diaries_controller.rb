@@ -64,7 +64,6 @@ class ChildrenDiariesController < ApplicationController
                        #{@children_diary.information}
                       ```"
             
-            #Slack::Notifier.new(ENV['SLACK_WEBHOOK_URL'],"共有連絡", "#{@children_diary}")
           end
       else
         flash[:alert] = "日付を選択してください"
@@ -88,6 +87,17 @@ class ChildrenDiariesController < ApplicationController
     @children_diary = ChildrenDiary.find(params[:id])
     if @children_diary.update(children_diary_params)
       flash[:success] = "内容が追加・更新されました"
+        if @children_diary.information.present?
+            notifier = Slack::Notifier.new(
+              ENV['SLACK_WEBHOOK_URL'],
+              channel: "##{ENV['SLACK_CHANNEL']}",
+              username: '〇〇施設　共有連絡'
+              )
+              notifier.ping "更新された連絡事項があります！
+                      ```
+                       #{@children_diary.information}
+                      ```"
+        end
       redirect_to @children_diary
     else
       render 'edit'

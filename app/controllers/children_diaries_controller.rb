@@ -60,9 +60,9 @@ class ChildrenDiariesController < ApplicationController
               username: '〇〇施設　共有連絡'
               )
               notifier.ping "新しい連絡事項があります！
-                      ````
+                      ```
                        #{@children_diary.information}
-                      ````"
+                      ```"
             
             #Slack::Notifier.new(ENV['SLACK_WEBHOOK_URL'],"共有連絡", "#{@children_diary}")
           end

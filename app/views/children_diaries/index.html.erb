@@ -25,7 +25,10 @@
     <% @diaries.each do |diary| %>
       <% child = Child.find_by(id: diary.children_id) %>
       <tr>
-        <td><%= child.name %></td>
+        <td><% if diary.information.present? %>
+            <%= " " %>
+            <% else %>
+            <%= child.name %><%end%></td>
         <td>
              <%if diary.living.present?%><%= "(生活状況)   #{diary.living}"%><%end%>
              <%if diary.health.present?%><%= "(健康状況)   #{diary.health}"%><%end%>

@@ -1,24 +1,38 @@
-# README
+#  Children_Diary
+児童養護施設にて大勢の子供たちの状況を職員間で共有できるサービスです。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+日付ごとに児童状況を検索でき、PDF出力できます。
 
-Things you may want to cover:
 
-* Ruby version
+##  作成した目的
+児童養護施設で勤務していた際に使用していた日誌サービスを作成しました。
 
-* System dependencies
+施設内の連絡共有が毎朝の口頭連絡のみであったため、全職員に情報が行き届かない、という問題点がありました。
 
-* Configuration
+そこで共有連絡欄（Slack通知あり）を追加した日誌サービスを作成してみました。
 
-* Database creation
+最初は児童情報が追加されるたびに通知機能をつけていましたが、前職の同期から『勤務が終わったあとに通知が多く着過ぎてしまうと気持ちの切り替えができない』と言う意見をもらいました。
 
-* Database initialization
+そこで追加件数が比較的少なく、確実に全職員が把握する必要がある共有連絡のみSlack通知機能をつける使用へと変更いたしました。
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+## 使用技術
+* HTML/CSS
+* Ruby 2.6.3
+* Rails 6.0.3
+* MySQL
+* Prawn
 
-* Deployment instructions
+## インフラ
+- AWS
+    - VPC
+    - EC2
+    - RDS
 
-* ...
+## 機能一覧
+* ユーザー登録/ログイン機能
+* 児童情報　CRUD
+* 児童情報　PDF印刷機能
+* 児童情報　日付別検索機能
+* 共有連絡のSlack通知機能
+
